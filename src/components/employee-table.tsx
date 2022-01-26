@@ -55,6 +55,6 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
             </tbody>
         </table>
         <button onClick={getReimbs}>refresh</button>
-        <div>user is {props.user.username} : {props.user.password} : {props.user.id} : {props.user.reimbs.join(",")}</div>
+        <div>user is {props.user.username} : {props.user.id} : {props.user.reimbs.join(",")}</div>
     </>)
 }

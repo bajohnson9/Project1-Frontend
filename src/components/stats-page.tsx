@@ -1,29 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { User } from "../models/dtos/dto";
 import NavBarMgr from "./nav-bar-manager";
+import StatRow from "./stat-row";
 
 
 
 export default function StatsPage(props:{user:User, updateUser:Function}) {
-    const loggedInUser = props.user;
-    let stats:string[] = []
+    let [stats, setStats] = useState<string[]>([])
 
     async function getStats(){
     
-    const response = await fetch("http://localhost:5000/stats", {
-        method: "GET",
-        headers:  {'Content-Type': 'application/json'}
+        const response = await fetch("http://localhost:5000/stats", {
+            method: "GET",
+            headers:  {'Content-Type': 'application/json'}
         })
-        stats = await response.json();
-        return Promise.resolve(stats);
+        const statsJSON = await response.json();
+        console.log(statsJSON);
+        setStats(statsJSON)
     }
-
-
 
     useEffect(()=>{
         getStats();
-        console.log(getStats());
     },[])
+
     return (<>
         
         
@@ -32,13 +31,11 @@ export default function StatsPage(props:{user:User, updateUser:Function}) {
         <br/>
         <table>
             <thead>
-                <tr><th>Name</th><th>Description</th><th>Amount</th><th>Status</th><th>id</th></tr>
+                <tr><th>Name</th></tr>
             </thead>
-            <tbody>
-                {stats}
-            </tbody>
+            <tbody>{stats.map(item => <StatRow stat={item} key={item}/>)}</tbody>
         </table>
-        <h6>Your ID is {loggedInUser.id}</h6>
+        <h6>Your ID is {props.user.id}</h6>
         
     </>)
 }

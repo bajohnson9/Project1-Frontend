@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { User } from "../../models/dtos/dto";
-import Login from "../login";
 
 
 export default function NavBarMgr(){

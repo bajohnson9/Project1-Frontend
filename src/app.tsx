@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EmployeePage from "./components/emp/employee-page";
 import Login from "./components/login";
 import ManagerPage from "./components/manager/manager-page";

@@ -6,7 +6,6 @@ import User from "../models/user";
 
 //props:function setUser or something (LOOK IN PLEASANT)
 export default function Login(props:{user:User, updateUser:Function}) {
-    const {user, updateUser} = props;
     const navigate = useNavigate();
 
     const unInput = useRef (null);

@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
-import ReimbursementItem, { User } from "../models/dtos/dto";
-import ReimbursementRow from "./reimbursement-row";
-import ReimbCreator from "./reimb-creator-mgr";
+import ReimbursementItem, { User } from "../../models/dtos/dto";
+import ReimbursementRow from "../reimbursement-row";
 import NavBarMgr from "./nav-bar-manager";
+import ReimbCreatorMgr from "./reimb-creator-mgr";
 
 
  export default function ManagerPage(props:{user:User, updateUser:Function}) {
-    /*
-    //placeholder
-    const dummyReimbursements:ReimbursementItem[] = [
-        {id:"1", type:"Food", desc:"Two dozen hunks of meat", amount:50, status:ReimbursementStatus.pending},
-        {id:"2", type:"Collateral", desc:"17 battleships destroyed", amount:5000000, status:ReimbursementStatus.denied},
-        {id:"3", type:"Tribute", desc:"Big Mom didn't pay up", amount:75000, status:ReimbursementStatus.denied},
-        {id:"4", type:"Collateral", desc:"9 Government cars", amount:1800000, status:ReimbursementStatus.approved}];
-    */
-
     const [reimbs,setReimbs] = useState([]);
     //let tableRows = reimbs.map(r => <ReimbursementRow key={r.id} item={r}/>)
         
@@ -30,7 +21,7 @@ import NavBarMgr from "./nav-bar-manager";
     useEffect(()=>{
         getReimbs();
         
-    },[])
+    },[props.user])
 
     async function approveReimbursement(item:ReimbursementItem): Promise<void> {
         await fetch("http://localhost:5000/reimbs/approve", {
@@ -81,6 +72,6 @@ import NavBarMgr from "./nav-bar-manager";
                     {approve:()=>approveReimbursement(item), deny:()=>denyReimbursement(item), delete:()=>deleteReimbursement(item)}}/>)}
             </tbody>
         </table>
-        <ReimbCreator user={props.user}/>
+        <ReimbCreatorMgr user={props.user} updateUser={props.updateUser}/>
     </>)
  }

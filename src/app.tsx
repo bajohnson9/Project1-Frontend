@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import EmployeePage from "./components/employee-page";
+import EmployeePage from "./components/emp/employee-page";
 import Login from "./components/login";
-import ManagerPage from "./components/manager-page";
-import StatsPage from "./components/stats-page";
+import ManagerPage from "./components/manager/manager-page";
+import StatsPage from "./components/manager/stats-page";
 import User from "./models/user";
 import './app.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EmployeePageMgr from "./components/employee-page-mgr";
+import EmployeePageMgr from "./components/manager/employee-page-mgr";
 
 export default function App() {
     
@@ -23,14 +23,6 @@ export default function App() {
         isManager:Boolean(sessionStorage.getItem('isManager')),
         reimbs:reimbs
     });
-
-    function getUser(){
-        
-    }
-
-    useEffect(()=>{
-        setUser(user);
-    },[])
 
     return (<>
 

@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { User } from "../../models/dtos/dto";
+import Login from "../login";
 
 
 export default function NavBarMgr(){
     
-    //props.updateUser(props.user)
     const nav = useNavigate();
 
     function toLogin(){ nav("../../login") }

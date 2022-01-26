@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User } from "../models/dtos/dto";
+import { User } from "../../models/dtos/dto";
 import NavBarMgr from "./nav-bar-manager";
 import StatRow from "./stat-row";
 

@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import { ReimbursementStatus } from "../models/reimbursement-item";
-import { addRequest, User } from "../models/dtos/dto";
+import { ReimbursementStatus } from "../../models/reimbursement-item";
+import ReimbursementItem, { addRequest, User } from "../../models/dtos/dto";
 
-export default function ReimbCreator(props:{user:User}){
+export default function ReimbCreatorMgr(props:{user:User, updateUser:Function}){
 
     const typeInput = useRef(null);
     const descInput = useRef(null);
@@ -14,9 +14,9 @@ export default function ReimbCreator(props:{user:User}){
         try{
         const requ:addRequest = {user:{
             
-            username:"",
+            username:empIDInput.current.value,
             password:"",
-            id: empIDInput.current.value,
+            id: "",
             isAuthenticated:false,
             isManager:false,
             reimbs: []
@@ -37,6 +37,12 @@ export default function ReimbCreator(props:{user:User}){
         headers:  {'Content-Type': 'application/json'},
         body: JSON.stringify(requ)
         })
+
+        const returnedReimb:ReimbursementItem = await response.json();
+        const user = {...props.user}
+        user.reimbs.push(returnedReimb.id)
+        props.updateUser({...user})
+
     
         } catch(error) {
             console.error("error posting new reimb")

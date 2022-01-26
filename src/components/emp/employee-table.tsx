@@ -1,5 +1,5 @@
-import ReimbursementItem, { User } from "../models/dtos/dto"; 
-import ReimbursementRow from "./reimbursement-row";
+import ReimbursementItem, { User } from "../../models/dtos/dto"; 
+import ReimbursementRow from "../reimbursement-row";
 import { useEffect, useState } from "react";
 
 
@@ -24,23 +24,12 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
         }
         
         setReimbs(newReimbs);
-        const tempUser:User = {...props.user, reimbs:ids}
-        await props.updateUser({...tempUser})
-        
-
-        sessionStorage.setItem("username", tempUser.username);
-        sessionStorage.setItem("password", tempUser.password);
-        sessionStorage.setItem("id", tempUser.id);
-        sessionStorage.setItem("isAuthenticated", String(tempUser.isAuthenticated));
-        sessionStorage.setItem("isManager", String(tempUser.isManager));
-        sessionStorage.setItem("reimbs", tempUser.reimbs.join(","))
     }
     
     
     useEffect(()=>{
         getReimbs();
-        
-    },[])
+    },[props.user])
     //the empty array represents stateful dependencies that can retrigger useEffect
     //empty means run once upon initialization
     //can use for multiple segments

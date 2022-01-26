@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
-import ReimbursementItem from "../models/reimbursement-item";
-import User from "../models/user";
+import ReimbursementItem from "../../models/reimbursement-item";
+import User from "../../models/user";
 
 
 export default function StatDisplay(props:{

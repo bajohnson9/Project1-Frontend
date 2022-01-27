@@ -9,7 +9,7 @@ import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";
     const [reimbs,setReimbs] = useState([]);      
 
     async function getReimbs(){
-        const response = await fetch("http://localhost:5000/reimbs")
+        const response = await fetch("https://project1-backend-final.azurewebsites.net/reimbs")
         const reimbs2:ReimbursementItem[] = await response.json();
         //filter out reimbs that aren't theirs
         
@@ -22,36 +22,36 @@ import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";
     },[props.user])
 
     async function approveReimbursement(item:ReimbursementItem): Promise<void> {
-        await fetch("http://localhost:5000/reimbs/approve", {
+        await fetch("https://project1-backend-final.azurewebsites.net/reimbs/approve", {
         method: "PATCH",
         headers:  {'Content-Type': 'application/json'},   
         body: JSON.stringify(item)
         })
         //redundant, dont need 2s
-        const response2 = await fetch("http://localhost:5000/reimbs")
+        const response2 = await fetch("https://project1-backend-final.azurewebsites.net/reimbs")
         const reimbs2:ReimbursementItem[] = await response2.json();
         setReimbs(reimbs2);
     } 
 
     async function denyReimbursement(item:ReimbursementItem): Promise<void> {
-        await fetch("http://localhost:5000/reimbs/deny", {
+        await fetch("https://project1-backend-final.azurewebsites.net/reimbs/deny", {
         method: "PATCH",
         headers:  {'Content-Type': 'application/json'},
         body: JSON.stringify(item)
         })
-        const response2 = await fetch("http://localhost:5000/reimbs")
+        const response2 = await fetch("https://project1-backend-final.azurewebsites.net/reimbs")
         const reimbs2:ReimbursementItem[] = await response2.json();
         setReimbs(reimbs2);
         
     }
 
     async function deleteReimbursement(item:ReimbursementItem): Promise<void> {
-        await fetch("http://localhost:5000/reimbs", {
+        await fetch("https://project1-backend-final.azurewebsites.net/reimbs", {
         method: "DELETE",
         headers:  {'Content-Type': 'application/json'},
         body: JSON.stringify(item)
         })
-        const response2 = await fetch("http://localhost:5000/reimbs")
+        const response2 = await fetch("https://project1-backend-final.azurewebsites.net/reimbs")
         const reimbs2:ReimbursementItem[] = await response2.json();
         setReimbs(reimbs2);
     }

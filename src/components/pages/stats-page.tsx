@@ -10,7 +10,7 @@ export default function StatsPage(props:{user:User, updateUser:Function}) {
 
     async function getStats(){
     
-        const response = await fetch("http://localhost:5000/stats", {
+        const response = await fetch("https://project1-backend-final.azurewebsites.net/stats", {
             method: "GET",
             headers:  {'Content-Type': 'application/json'}
         })

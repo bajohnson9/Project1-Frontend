@@ -23,23 +23,28 @@ export default function ReimbCreatorEmp(props:{user:User, updateUser:Function}){
         
         console.log(requ);
         //make the request
-        const response = await fetch("http://localhost:5000/reimbs", {
+        const response = await fetch("https://project1-backend-final.azurewebsites.net/reimbs", {
         method: "POST",
         headers:  {'Content-Type': 'application/json'},
         body: JSON.stringify(requ)
         })
 
+        //update table
         const returnedReimb:ReimbursementItem = await response.json();
+        //update user
         const user = {...props.user}
         user.reimbs.push(returnedReimb.id)
         props.updateUser({...user})
+        //clear inputs
+        typeInput.current.value = "";
+        descInput.current.value = "";
+        amountInput.current.value = "";
         
         } catch(error) {
             console.error("error posting new reimb")
         }
     
-        //return something? clear the inputs?
-        //try passing in getReimbs as a prop into UseEffect here
+        
     }
 
     return(<>

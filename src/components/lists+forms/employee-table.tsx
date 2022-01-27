@@ -10,7 +10,7 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
     
     //get from backend
     async function getReimbs(){
-        const response = await fetch("http://localhost:5000/reimbs")
+        const response = await fetch("https://project1-backend-final.azurewebsites.net/reimbs")
         const tempReimbs:ReimbursementItem[] = await response.json();
         //filter out reimbs that aren't theirs
         let newReimbs = [];
@@ -43,7 +43,5 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
                 {reimbs.map(item => <ReimbursementRow item={item} key={item.id}/>)}
             </tbody>
         </table>
-        <button onClick={getReimbs}>refresh</button>
-        <div>user is {props.user.username} : {props.user.id} : {props.user.reimbs.join(",")}</div>
     </>)
 }

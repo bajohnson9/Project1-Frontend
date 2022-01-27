@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 export default function EmployeeTable(props: {user:User, updateUser:Function}){
     
     const [reimbs,setReimbs] = useState([]);
-    let tempReimbs:ReimbursementItem[] = []
+    
     //get from backend
     async function getReimbs(){
         const response = await fetch("http://localhost:5000/reimbs")
-        tempReimbs = await response.json();
+        const tempReimbs:ReimbursementItem[] = await response.json();
         //filter out reimbs that aren't theirs
         let newReimbs = [];
         let ids = [];
@@ -23,12 +23,13 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
         }
         
         setReimbs(newReimbs);
+        return newReimbs;   
     }
     
     
     useEffect(()=>{
         getReimbs();
-    },[tempReimbs, props.user])
+    },[props.user])
     //the empty array represents stateful dependencies that can retrigger useEffect
     //empty means run once upon initialization
     //can use for multiple segments

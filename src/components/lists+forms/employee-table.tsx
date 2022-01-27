@@ -27,10 +27,12 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
     
     useEffect(()=>{
         getReimbs();
-    },[props.user])
+    },[getReimbs, props.user])
+    
+    //alternative to get sonarcloud to shut up
+
     //the empty array represents stateful dependencies that can retrigger useEffect
     //empty means run once upon initialization
-    //can use for multiple segments
     
     return(<>
         <table>

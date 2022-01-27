@@ -14,11 +14,9 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
         const tempReimbs:ReimbursementItem[] = await response.json();
         //filter out reimbs that aren't theirs
         let newReimbs = [];
-        let ids = [];
-        for(let i = 0; i < tempReimbs.length; i++){
-                if((props.user).reimbs.find(r => (r === tempReimbs[i].id))) {
-                newReimbs.push(tempReimbs[i]);
-                ids.push(tempReimbs[i].id)
+        for(let reimb of tempReimbs){
+                if((props.user).reimbs.find(r => (r === reimb.id))) {
+                newReimbs.push(reimb);
             }
         }
         
@@ -29,7 +27,7 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
     
     useEffect(()=>{
         getReimbs();
-    },[])
+    },[props.user])
     //the empty array represents stateful dependencies that can retrigger useEffect
     //empty means run once upon initialization
     //can use for multiple segments

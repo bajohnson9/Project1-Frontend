@@ -15,7 +15,6 @@ export default function StatsPage(props:{user:User, updateUser:Function}) {
             headers:  {'Content-Type': 'application/json'}
         })
         const statsJSON = await response.json();
-        console.log(statsJSON);
         setStats(statsJSON)
     }
 

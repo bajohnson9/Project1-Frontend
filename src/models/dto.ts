@@ -24,7 +24,7 @@ export interface User {
 
 }
 
-export interface addRequest{
+export interface AddRequest{
     user:User;
     reimb:ReimbursementItem;
 }

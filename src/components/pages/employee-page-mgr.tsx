@@ -1,6 +1,6 @@
-import { User } from "../../models/dtos/dto";
+import { User } from "../../models/dto";
 import EmployeeTable from "../lists+forms/employee-table";
-import ReimbCreatorEmp from "../lists+forms/reimb-creator";
+import ReimbCreatorEmp from "../lists+forms/reimb-creator-emp";
 import NavBarMgr from "../nav-bar-mgr";
 
 

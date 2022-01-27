@@ -1,4 +1,4 @@
-import ReimbursementItem, { User } from "../../models/dtos/dto"; 
+import ReimbursementItem, { User } from "../../models/dto"; 
 import ReimbursementRow from "../reimbursement-row";
 import { useEffect, useState } from "react";
 

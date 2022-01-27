@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ReimbursementItem, { User } from "../../models/dtos/dto";
+import ReimbursementItem, { User } from "../../models/dto";
 import ReimbursementRow from "../reimbursement-row";
 import NavBarMgr from "../nav-bar-mgr";
 import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";

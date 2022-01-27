@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { ReimbursementStatus } from "../../models/reimbursement-item";
-import ReimbursementItem, { addRequest, User } from "../../models/dtos/dto";
+import ReimbursementItem, { AddRequest, User } from "../../models/dto";
 
 
 export default function ReimbCreatorEmp(props:{user:User, updateUser:Function}){
@@ -11,7 +11,7 @@ export default function ReimbCreatorEmp(props:{user:User, updateUser:Function}){
     async function createReimb(){
         //create the add request
         try{
-        const requ:addRequest = {user:{...props.user},
+        const requ:AddRequest = {user:{...props.user},
         reimb:{
             id:"",
             type: typeInput.current.value,

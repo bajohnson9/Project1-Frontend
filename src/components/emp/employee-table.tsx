@@ -29,7 +29,7 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
     
     useEffect(()=>{
         getReimbs();
-    },[props.user])
+    },[])
     //the empty array represents stateful dependencies that can retrigger useEffect
     //empty means run once upon initialization
     //can use for multiple segments

@@ -1,25 +1,24 @@
 import { User } from "../../models/dtos/dto";
-import EmployeeTable from "./employee-table";
-import NavBar from "./nav-bar";
-import ReimbCreatorEmp from "./reimb-creator";
+import EmployeeTable from "../lists+forms/employee-table";
+import ReimbCreatorEmp from "../lists+forms/reimb-creator";
+import NavBarMgr from "../nav-bar-mgr";
 
 
-export default function EmployeePage(props:{user:User, updateUser:Function}) {
-    /*
-    props.updateUser({
+export default function EmployeePageMgr(props:{user:User, updateUser:Function}) {
+    /*props.updateUser({
         username:sessionStorage.getItem('username'),
         password:sessionStorage.getItem('password'), 
         id:sessionStorage.getItem('id'), 
         isAuthenticated:Boolean(sessionStorage.getItem('isAuthenticated')), 
         isManager:Boolean(sessionStorage.getItem('isManager')),
         reimbs:(sessionStorage.getItem('reimbs').split(',').map(String))
-    }) */
+    })*/
 
     return (<>
         
         
         <h2>You are now on the Employee Page!</h2>
-        <NavBar/>
+        <NavBarMgr/>
         <h3>Reimbursement Table</h3>
         <EmployeeTable user={props.user} updateUser={props.updateUser}/>
         <ReimbCreatorEmp user={props.user} updateUser={props.updateUser}/>

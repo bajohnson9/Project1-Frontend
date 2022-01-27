@@ -1,6 +1,6 @@
 //import { MouseEventHandler } from "react";
 
-export default function StatRow(props:{stat:String}) {
+export default function StatRow(props:{stat:string}) {
 
     const stat = props.stat;
 

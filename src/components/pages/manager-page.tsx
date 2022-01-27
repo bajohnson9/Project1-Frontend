@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 import ReimbursementItem, { User } from "../../models/dtos/dto";
 import ReimbursementRow from "../reimbursement-row";
-import NavBarMgr from "./nav-bar-manager";
-import ReimbCreatorMgr from "./reimb-creator-mgr";
+import NavBarMgr from "../nav-bar-mgr";
+import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";
 
 
  export default function ManagerPage(props:{user:User, updateUser:Function}) {
-    const [reimbs,setReimbs] = useState([]);
-    //let tableRows = reimbs.map(r => <ReimbursementRow key={r.id} item={r}/>)
-        
+    const [reimbs,setReimbs] = useState([]);      
 
     async function getReimbs(){
         const response = await fetch("http://localhost:5000/reimbs")
-        const reimbs:ReimbursementItem[] = await response.json();
+        const reimbs2:ReimbursementItem[] = await response.json();
         //filter out reimbs that aren't theirs
         
-        setReimbs(reimbs);
+        setReimbs(reimbs2);
     }
 
     useEffect(()=>{

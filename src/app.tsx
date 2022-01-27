@@ -1,12 +1,12 @@
 import { useState } from "react";
-import EmployeePage from "./components/emp/employee-page";
-import Login from "./components/login";
-import ManagerPage from "./components/manager/manager-page";
-import StatsPage from "./components/manager/stats-page";
+import EmployeePage from "./components/pages/employee-page";
+import Login from "./components/lists+forms/login";
+import ManagerPage from "./components/pages/manager-page";
+import StatsPage from "./components/pages/stats-page";
 import User from "./models/user";
 import './app.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EmployeePageMgr from "./components/manager/employee-page-mgr";
+import EmployeePageMgr from "./components/pages/employee-page-mgr";
 
 export default function App() {
     

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "../models/user";
+import User from "../../models/user";
 
 
 

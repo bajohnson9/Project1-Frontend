@@ -2,7 +2,7 @@ import { User } from "../../models/dto";
 import EmployeeTable from "../lists+forms/employee-table";
 import NavBar from "../fragments/nav-bar";
 import ReimbCreatorEmp from "../lists+forms/reimb-creator-emp";
-import { HeadingText, StaticText } from "../styles/text.style";
+import { HeadingText } from "../styles/text.style";
 import { ReimbView } from "../styles/views.style";
 
 import employeebackground from '../../employee-background.jpg'   

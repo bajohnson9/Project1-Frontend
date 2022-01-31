@@ -1,6 +1,7 @@
 import ReimbursementItem, { User } from "../../models/dto"; 
-import ReimbursementRow from "../reimbursement-row";
+import ReimbursementRow from "../fragments/reimbursement-row";
 import { useEffect, useState } from "react";
+import { ReimbTable } from "../styles/elements.style";
 
 
 
@@ -35,13 +36,13 @@ export default function EmployeeTable(props: {user:User, updateUser:Function}){
     //empty means run once upon initialization
     
     return(<>
-        <table>
+        <ReimbTable>
             <thead>
-                <tr><th>Name</th><th>Description</th><th>Amount</th><th>Status</th><th>id</th></tr>
+                <tr><th>Category</th><th>Description</th><th>Amount</th><th>Status</th><th>ID</th></tr>
             </thead>
-            <tbody>
+            <tbody style={{border: "1px dotted red"}}>
                 {reimbs.map(item => <ReimbursementRow item={item} key={item.id}/>)}
             </tbody>
-        </table>
+        </ReimbTable>
     </>)
 }

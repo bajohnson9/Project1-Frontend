@@ -1,12 +1,17 @@
 import { useState } from "react";
 import EmployeePage from "./components/pages/employee-page";
-import Login from "./components/lists+forms/login";
+import Login from "./components/pages/login";
 import ManagerPage from "./components/pages/manager-page";
 import StatsPage from "./components/pages/stats-page";
 import User from "./models/user";
-import './app.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EmployeePageMgr from "./components/pages/employee-page-mgr";
+import { ContainerDiv } from "./components/styles/containers.style";
+
+
+
+
+
 
 export default function App() {
     
@@ -24,7 +29,9 @@ export default function App() {
         reimbs:reimbs
     });
 
-    return (<>
+    return (<div style={{width:'100%', height: '100%'}}>
+
+
 
     {
     <BrowserRouter>
@@ -44,6 +51,6 @@ export default function App() {
     
     </BrowserRouter>
         }
-    </>);
+    </div>);
 }
 

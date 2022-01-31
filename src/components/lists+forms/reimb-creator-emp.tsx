@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { ReimbursementStatus } from "../../models/reimbursement-item";
 import ReimbursementItem, { AddRequest, User } from "../../models/dto";
+import { Button } from "../styles/elements.style";
+import { ButtonText, HeadingText, StaticLabel } from "../styles/text.style";
 
 
 export default function ReimbCreatorEmp(props:{user:User, updateUser:Function}){
@@ -47,17 +49,21 @@ export default function ReimbCreatorEmp(props:{user:User, updateUser:Function}){
         
     }
 
-    return(<>
-        <h3>Create a Reimb:</h3>
+    return(<div>
+        <HeadingText>Create a Reimbursement:</HeadingText><br/>
     
-        <label htmlFor="typeInput">type</label>
+        <StaticLabel htmlFor="typeInput">Type</StaticLabel>
         <input type="text" ref={typeInput} placeholder="type"/>
         <br/>
-        <label htmlFor="descInput">desc</label>
+        <StaticLabel htmlFor="descInput">Desc</StaticLabel>
         <input type="desc" ref={descInput} placeholder="desc"/>
         <br/>
-        <label htmlFor="amountInput">amount</label>
+        <StaticLabel htmlFor="amountInput">Amount</StaticLabel>
         <input type="amount" ref={amountInput} placeholder="amt"/>
-        <button onClick={createReimb}>add reimb</button>
-    </>)
+        <>
+        <br/><ButtonText style={{paddingLeft: 18, position:"absolute", color: "yellow"}}>Add Reimb</ButtonText>
+             <Button onClick={createReimb}></Button>
+
+        </>
+    </div>)
 }

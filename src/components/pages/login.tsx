@@ -2,7 +2,12 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import User from "../../models/user";
 
+import { Button } from "../styles/elements.style";
+import { LoginView } from "../styles/views.style";
+import { TextBox } from "../styles/elements.style";
 
+import backgroundimage from '../../backgroundimage.jpg'
+import { HeadingText } from "../styles/text.style";
 
 //props:function setUser or something (LOOK IN PLEASANT)
 export default function Login(props:{user:User, updateUser:Function}) {
@@ -38,12 +43,26 @@ export default function Login(props:{user:User, updateUser:Function}) {
         
     }
 
-    return(<>
-        <h2>Login:</h2><br />
-        <input ref={unInput} type="text" placeholder="username"/><br />
-        <input ref={pwInput} type="password" placeholder="password"/><br />
-        <button onClick={login}>Login</button>
+    return(<LoginView style={{
+        margin: '0px',
+        height: '100%',
+        backgroundImage: `url(${backgroundimage})`,
+        backgroundSize: '100% auto',
+        position: 'absolute',
+        
+    }}>
+        
+        {/* image goes here */}
+        <img src="https://project1storagebrooks.blob.core.windows.net/brooks-project1/logo.png" alt="logo" style={{flex:1, top: 50, right: '30%', height:400,width:600,alignItems:'center', position: 'absolute'}}></img>
+        <img src="https://project1storagebrooks.blob.core.windows.net/brooks-project1/Log In.png" alt="Log In" style={{flex:1, height:100,width:300,alignItems:'center'}}></img>
+        
 
-    </>);
+        <TextBox ref={unInput} type="text" placeholder="username"/><br />
+        <TextBox ref={pwInput} type="password" placeholder="password"/><br />
+        
+        <Button onClick={login}>Log In</Button>
+
+    </LoginView>);
 
 }
+

@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import ReimbursementItem, { User } from "../../models/dto";
-import ReimbursementRow from "../reimbursement-row";
-import NavBarMgr from "../nav-bar-mgr";
+import ReimbursementRow from "../fragments/reimbursement-row";
+import NavBarMgr from "../fragments/nav-bar-mgr";
 import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";
+import { MgrView } from "../styles/views.style";
+import { HeadingText } from "../styles/text.style";
+import { ReimbTable } from "../styles/elements.style";
 
+import managerbackground from "../../manager-background.jpg"
+import { ContainerDiv } from "../styles/containers.style";
 
  export default function ManagerPage(props:{user:User, updateUser:Function}) {
     const [reimbs,setReimbs] = useState([]);      
@@ -56,12 +61,20 @@ import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";
         setReimbs(reimbs2);
     }
         
-    return(<>
+    return(<><MgrView style={{
+        margin: '0px',
+        height: '100%',
+        backgroundImage: `url(${managerbackground})`,
+        backgroundSize: '100% auto',
+        position: 'absolute',
+        backgroundRepeat: 'no-repeat'
         
-        <h2>Welcome to the Manager Home page!</h2>
-        <NavBarMgr/>
-        <h3>Reimbursement Table</h3>
-        <table>
+        }}>
+        
+        <HeadingText>Welcome to the Manager Home page!</HeadingText><br/>
+        
+        <HeadingText style={{fontSize:'25px'}}>All Reimbursements:</HeadingText><br/>
+        <ReimbTable>
             <thead>
                 <tr><th>Type</th><th>Description</th><th>Amount</th><th>Status</th><th>id</th><th>Manager Functions</th></tr>
             </thead>
@@ -69,7 +82,9 @@ import ReimbCreatorMgr from "../lists+forms/reimb-creator-mgr";
                 {reimbs.map(item => <ReimbursementRow item={item} key={item.id} managerFunctions={
                     {approve:()=>approveReimbursement(item), deny:()=>denyReimbursement(item), delete:()=>deleteReimbursement(item)}}/>)}
             </tbody>
-        </table>
+        </ReimbTable><br/>
         <ReimbCreatorMgr user={props.user} updateUser={props.updateUser}/>
+    </MgrView>
+    <NavBarMgr/>
     </>)
  }

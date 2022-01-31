@@ -1,28 +1,34 @@
 import { User } from "../../models/dto";
 import EmployeeTable from "../lists+forms/employee-table";
 import ReimbCreatorEmp from "../lists+forms/reimb-creator-emp";
-import NavBarMgr from "../nav-bar-mgr";
+import NavBarMgr from "../fragments/nav-bar-mgr";
+import { ReimbView } from "../styles/views.style";
 
+import employeebackground from '../../employee-background.jpg'   
+import { HeadingText } from "../styles/text.style";
+import { ContainerDiv } from "../styles/containers.style";
 
 export default function EmployeePageMgr(props:{user:User, updateUser:Function}) {
-    /*props.updateUser({
-        username:sessionStorage.getItem('username'),
-        password:sessionStorage.getItem('password'), 
-        id:sessionStorage.getItem('id'), 
-        isAuthenticated:Boolean(sessionStorage.getItem('isAuthenticated')), 
-        isManager:Boolean(sessionStorage.getItem('isManager')),
-        reimbs:(sessionStorage.getItem('reimbs').split(',').map(String))
-    })*/
 
-    return (<>
+return (<>        
         
+        <ReimbView style={{
+        margin: '0px',
+        height: '100%',
+        backgroundImage: `url(${employeebackground})`,
+        backgroundSize: '100% auto',
+        position: 'absolute',
+        backgroundRepeat: 'no-repeat'
         
-        <h2>You are now on the Employee Page!</h2>
+        }}>
+    
+            <HeadingText>Your Reimbursements:</HeadingText>
+            <EmployeeTable user={props.user} updateUser={props.updateUser}/>
+            <ReimbCreatorEmp user={props.user} updateUser={props.updateUser}/>
+            <h6 style={{color: "white"}}>Your ID is {props.user.id}</h6>
+            <br/> 
+        </ReimbView>
         <NavBarMgr/>
-        <h3>Reimbursement Table</h3>
-        <EmployeeTable user={props.user} updateUser={props.updateUser}/>
-        <ReimbCreatorEmp user={props.user} updateUser={props.updateUser}/>
-        <h6>Your ID is {props.user.id}</h6>
-        <br/> 
+        
     </>)
 }

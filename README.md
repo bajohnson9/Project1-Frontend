@@ -13,3 +13,5 @@
 	- Statistics page (Stats)
 		- Shows users with notable reimbursements
 		
+
+Styling done with Styled Components

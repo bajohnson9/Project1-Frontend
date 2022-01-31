@@ -2,12 +2,11 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import User from "../../models/user";
 
-import { Button } from "../styles/elements.style";
+import { Button, TextBox } from "../styles/elements.style";
 import { LoginView } from "../styles/views.style";
-import { TextBox } from "../styles/elements.style";
 
-import backgroundimage from '../../backgroundimage.jpg'
-import { HeadingText } from "../styles/text.style";
+
+import backgroundimage from '../../loginimage.jpg'
 
 //props:function setUser or something (LOOK IN PLEASANT)
 export default function Login(props:{user:User, updateUser:Function}) {

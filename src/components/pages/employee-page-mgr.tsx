@@ -6,7 +6,6 @@ import { ReimbView } from "../styles/views.style";
 
 import employeebackground from '../../employee-background.jpg'   
 import { HeadingText } from "../styles/text.style";
-import { ContainerDiv } from "../styles/containers.style";
 
 export default function EmployeePageMgr(props:{user:User, updateUser:Function}) {
 

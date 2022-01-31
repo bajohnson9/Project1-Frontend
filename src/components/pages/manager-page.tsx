@@ -8,7 +8,6 @@ import { HeadingText } from "../styles/text.style";
 import { ReimbTable } from "../styles/elements.style";
 
 import managerbackground from "../../manager-background.jpg"
-import { ContainerDiv } from "../styles/containers.style";
 
  export default function ManagerPage(props:{user:User, updateUser:Function}) {
     const [reimbs,setReimbs] = useState([]);      
